@@ -1,5 +1,5 @@
 import argparse
-from combiner_lib import get_dirs
+from combiner_lib import get_dirs, get_chat
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -11,4 +11,10 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    print(get_dirs(args.path, args.restricted))
+    chats = []
+    for dir in get_dirs(args.path, args.restricted):
+        chats.append(get_chat(dir))
+
+    for msg in chats[0]:
+        print(msg)
+        break
