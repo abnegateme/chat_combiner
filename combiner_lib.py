@@ -1,5 +1,6 @@
 import re
 import json
+import datetime
 from os import listdir, PathLike
 from os.path import isdir, join as p_join, basename
 
@@ -43,3 +44,9 @@ def get_chat(dir: str) -> Chat:
         dump = json.load(_f)
 
     return Chat(dump=dump)
+
+
+def date_generator(from_date, to_date):
+    while from_date <= to_date:
+        yield from_date
+        from_date = from_date + datetime.timedelta(days=1)
